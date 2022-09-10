@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.17.3 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 
 dependencies:
@@ -26,9 +26,9 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  velocity_x: 
+  velocity_x:
   get: 
-  better_player: 
+  better_player: ^0.0.83
   pull_to_refresh: 
   connectivity:
   wp_json_api:
@@ -48,14 +48,14 @@ dependencies:
   share:
   url_launcher:
   introduction_screen: 
-  audioplayers: ^0.20.1
-  radio_player:
+  radio_player: ^1.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^1.0.0
+
   
 flutter:
 
