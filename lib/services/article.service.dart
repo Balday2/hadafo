@@ -15,6 +15,7 @@ class ArticleService {
     return Helpers.response(response.body, response.statusCode);
   }
 
+
   static Future<dynamic> categories() async {
     var response = await http.get(Uri.parse('$_url/categories?per_page=100'))
     .timeout(const Duration(seconds: 60), onTimeout:() => http.Response('error', 409));

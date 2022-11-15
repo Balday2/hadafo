@@ -49,7 +49,7 @@ class TvController extends GetxController {
       ),
       betterPlayerDataSource: betterPlayerDataSource,
     );
-    betterPlayerCtrl!.enablePictureInPicture(betterPlayerKey);
+    betterPlayerCtrl!.enablePictureInPicture(GlobalKey());
 
     return betterPlayerCtrl!;
   }

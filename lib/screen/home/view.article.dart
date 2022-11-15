@@ -32,7 +32,7 @@ class ViewArticle extends StatelessWidget {
   Widget build(BuildContext context) {
     var art = article;
     return Scaffold(
-      backgroundColor: Get.isDarkMode ? Vx.gray900 : Vx.gray100,
+      backgroundColor: Helpers.theme() ? Vx.gray900 : Vx.gray100,
       body: CustomScrollView(
         slivers:[
           SliverAppBar(
@@ -67,31 +67,31 @@ class ViewArticle extends StatelessWidget {
                 children: [
                   "${art.category}".text.bold.white.make().p(5).box.blue700.withRounded(value:3).make(),
                   [
-                    Icon(Feather.heart, color:Get.isDarkMode ? Vx.gray300 : Vx.gray500),
+                    Icon(Feather.heart, color:Helpers.theme() ? Vx.gray300 : Vx.gray500),
                     20.widthBox,
-                    Icon(Feather.bookmark, color:Get.isDarkMode ? Vx.gray300 : Vx.gray500),
+                    Icon(Feather.bookmark, color:Helpers.theme() ? Vx.gray300 : Vx.gray500),
                   ].hStack()
                 ]
               ),
 
 
               [
-                Icon(Feather.clock, size:15.0, color:Get.isDarkMode ? Vx.gray300 : Vx.gray500),
+                Icon(Feather.clock, size:15.0, color:Helpers.theme() ? Vx.gray300 : Vx.gray500),
                 5.widthBox,
-                Helpers.date(art.createdAt.toString()).text.base.color( Get.isDarkMode ? Vx.gray300 : Vx.gray500).make(),
+                Helpers.date(art.createdAt.toString()).text.base.color( Helpers.theme() ? Vx.gray300 : Vx.gray500).make(),
               ].hStack().pSymmetric(v:10),
 
-              "${art.title}".text.color( Get.isDarkMode ? Vx.gray300 : Vx.gray500).xl2.bold.make().pSymmetric(v:5),
+              "${art.title}".text.color( Helpers.theme() ? Vx.gray300 : Vx.gray500).xl2.bold.make().pSymmetric(v:5),
               VxBox().size(Get.width/3, 2).blue700.rounded.make().pSymmetric(v:5),
               [
                 const Icon(Feather.globe, size:15.0, color: Vx.gray500),
                 5.widthBox,
-                "https://www.rtg-koloma.info".text.base.underline.size(15).color( Get.isDarkMode ? Vx.gray300 : Vx.gray500).make(),
+                "https://www.rtg-koloma.info".text.base.underline.size(15).color( Helpers.theme() ? Vx.gray300 : Vx.gray500).make(),
               ].hStack().pSymmetric(v:5),
               // "${art.htmlContent}".text.make(), 
               Html(
                 data:"""
-                  <h3 style="color:${Get.isDarkMode ? '#E0E0E0' : 'black'}">${art.htmlContent}</h3>
+                  <h3 style="color:${Helpers.theme() ? '#E0E0E0' : 'black'}">${art.htmlContent}</h3>
                 """,
                 style: const {
                 },
@@ -101,7 +101,7 @@ class ViewArticle extends StatelessWidget {
                 10.widthBox,
                 VxBox().size(5, 20).roundedSM.blue700.make(),
                 7.widthBox,
-                "Articles similaires".text.bold.color(Get.isDarkMode ? Vx.gray300 : Vx.gray500).xl.make(),
+                "Articles similaires".text.bold.color(Helpers.theme() ? Vx.gray300 : Vx.gray500).xl.make(),
               ].hStack().pSymmetric(v:10),
 
               Obx(() => Column(
@@ -111,7 +111,7 @@ class ViewArticle extends StatelessWidget {
                     child: ui.circularProgress(
                       size:30.0,
                       tick: 2.2,
-                      color: Get.isDarkMode ? Vx.gray300 : Vx.gray500
+                      color: Helpers.theme() ? Vx.gray300 : Vx.gray500
                     )
                   )
                   else if(artCtrl.artModel2.isNotEmpty)...[
@@ -132,7 +132,7 @@ class ViewArticle extends StatelessWidget {
             ].vStack(
               crossAlignment: CrossAxisAlignment.start,
               axisSize: MainAxisSize.max,
-            ).pSymmetric(v:5).scrollVertical()
+            ).pSymmetric(v:5, h: 10).scrollVertical()
           )
         ]
       )

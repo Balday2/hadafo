@@ -25,6 +25,7 @@ class _TvState extends State<Tv> {
   final utCtrl = Get.find<UtilsController>();
   final tvCtrl = Get.find<TvController>();
   final ScrollController scrollCtrl = ScrollController();
+  
 
   // BetterPlayerController? betterPlayerCtrl;
 

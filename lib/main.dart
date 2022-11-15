@@ -4,9 +4,40 @@ import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:hadafo/screen/onboarding.dart';
+import 'package:xml2json/xml2json.dart';
 
 void main() async {
   await GetStorage.init();
+
+  const bookshelfXml = '''<?xml version="1.0"?>
+    <bookshelf>
+      <book>
+        <title lang="en">Growing a Language</title>
+        <price>29.99</price>
+      </book>
+      <book>
+        <title lang="en">Learning XML</title>
+        <price>39.95</price>
+      </book>
+      <price>132.00</price>
+    </bookshelf>''';
+    // final document = XmlDocument.parse(bookshelfXml);
+    // print(document.toString());
+    // print(document.toXmlString(pretty: true, indent: '\t'));
+
+     // Create a client transformer
+    final myTransformer = Xml2Json();
+
+    // Parse a simple XML string
+
+    myTransformer.parse(bookshelfXml);
+
+    // Transform to JSON using Badgerfish
+    var json = myTransformer.toBadgerfish();
+    print('Badgerfish');
+    print('');
+    print(json);
+    print('');
   runApp(const MyApp());
 }
 

@@ -1,10 +1,9 @@
 
-import 'package:flutter/material.dart';
 
 class ArticleModel {
   int id;
   String banner;
-  String thumbnail;
+  // String thumbnail;
   String author;
   String? tag;
   String category;
@@ -15,7 +14,7 @@ class ArticleModel {
 
   ArticleModel({
     required this.banner,
-    required this.thumbnail,
+    // required this.thumbnail,
     required this.author,
     required this.title,
     required this.category,
@@ -30,27 +29,18 @@ class ArticleModel {
   static List<ArticleModel> formatArticle(List<dynamic> jsonData) {
     return jsonData.map((json) {
 
-      var embedded = json['_embedded'];
-      Map<String, dynamic>? media;
-
-
-      try {
-        media = embedded['wp:featuredmedia'][0]['media_details']['sizes'];
-      } catch (e) {
-        debugPrint('===========error============\n$e');
-      }
-
       return ArticleModel(
+        banner: json['jetpack_featured_media_url'],
         id: json['id'],
-        author: embedded['author'][0]['name'],
-        banner: media == null ? json['yoast_head_json']['og_image'][0]['url'] : media['full']['source_url'],
-        thumbnail: media == null ? '' : media['thumbnail']['source_url'],
-        title: json['title']['rendered'],
-        category: embedded['wp:term'][0].lastWhere((term) => term['taxonomy'] == 'category')['name'],
-        description: json['excerpt']['rendered'],
-        htmlContent: json['content']['rendered'],
-        createdAt: DateTime.parse(json['date']),
+        author: json['_embedded']['author'][0]['name'],
         tag: null,
+        title: json['title']['rendered'],
+        createdAt: DateTime.parse(json['date']),
+        description: json['excerpt']['rendered'],
+        category: json['_embedded']['wp:term'][0].lastWhere((term) => term['taxonomy'] == 'category')['name'],
+        htmlContent: json['content']['rendered'],
+        // categoryId: json['categories'][0],
+        // url: json['_embedded']['author'][0]['url'],
       );
     }).toList();
   }

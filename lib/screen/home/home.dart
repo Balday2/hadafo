@@ -1,7 +1,7 @@
-import 'package:hadafo/screen/home/view.article.dart';
 import 'package:hadafo/controller/article.controller.dart';
 import 'package:hadafo/controller/utils.controller.dart';
 import 'package:hadafo/screen/home/home.widget.dart';
+import 'package:hadafo/screen/home/view.article.dart';
 import 'package:hadafo/tools/constants.dart';
 import 'package:hadafo/tools/helpers.dart';
 import 'package:hadafo/tools/widgets.dart';
@@ -35,7 +35,7 @@ class Home extends StatelessWidget {
     return Obx(() => Scaffold(
           backgroundColor: Helpers.theme() ? Vx.gray900 : Vx.white,
           appBar: appBar_(context),
-          body:SmartRefresher(
+          body: SmartRefresher(
               enablePullDown: true,
               enablePullUp: true,
               controller: _refreshCtrl,
