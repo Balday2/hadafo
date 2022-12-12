@@ -5,6 +5,7 @@ class MyCst {
 
   // static const link = "https://rtgkoloma.info/wp-json/wp/v2";
   static const link = "https://guineematin.com/wp-json/wp/v2";
+  // static const link = "  https://www.espacefmguinee.info/wp-json/wp/v2";
   // static const link = "https://guineenews.org/wp-json/wp/v2";
   static const darkMode = "DARKMODE";
   static const onBorading = "ONBOARDING";

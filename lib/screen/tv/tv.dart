@@ -2,6 +2,8 @@ import 'package:flutter_animator/flutter_animator.dart';
 import 'package:hadafo/controller/article.controller.dart';
 import 'package:hadafo/controller/tv.controller.dart';
 import 'package:hadafo/controller/utils.controller.dart';
+import 'package:hadafo/screen/tv/tv.widget.dart';
+import 'package:hadafo/screen/tv/video.dart';
 import 'package:hadafo/tools/helpers.dart';
 import 'package:hadafo/tools/widgets.dart';
 import 'package:flutter/material.dart';
@@ -120,7 +122,9 @@ class _TvState extends State<Tv> {
                                       5.heightBox,
                                       "OIklon".text.base.size(10.0).gray100.make()
                                     ],
-                                  ).pOnly(right: 10),
+                                  ).pOnly(right: 10).onInkTap(() {
+                                    Get.to(() => VideoPlayer(video: listTvs[0]));
+                                  }),
                                   preferences: AnimationPreferences( duration: (1000 + (i*100)).milliseconds),
                                 )
                           ],
@@ -169,7 +173,9 @@ class _TvState extends State<Tv> {
                                 ),
                               ],
                             ),
-                          ).pSymmetric(h: 10, v: 3)
+                          ).pSymmetric(h: 10, v: 3).onInkTap(() {
+                            Get.to(() => VideoPlayer(video: listTvs[0]));
+                          })
                       ],
                     ),
                   )

@@ -58,7 +58,7 @@ class BottomBar extends StatelessWidget {
             : utCtrl.tabIndex.value == 1
             ? const Tv()
             : utCtrl.tabIndex.value == 2
-            ?   const RadioPlayer()
+            ?   const PlayerRadio()
             : utCtrl.tabIndex.value == 3
             ?   Programme()
             :  User()

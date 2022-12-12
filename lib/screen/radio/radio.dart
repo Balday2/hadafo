@@ -1,4 +1,4 @@
-import 'package:hadafo/controller/player.controller.dart';
+import 'package:hadafo/controller/radio.controller.dart';
 import 'package:hadafo/tools/helpers.dart';
 import 'package:hadafo/tools/widgets.dart';
 import 'package:flutter/material.dart';
@@ -7,15 +7,15 @@ import 'package:velocity_x/velocity_x.dart';
 
 
 final my = WidgetsUi();
-final playerCtrl = Get.find<PlayerController>();
-class RadioPlayer extends StatefulWidget {
-  const RadioPlayer({Key? key}) : super(key: key);
+final playerCtrl = Get.find<RadioController>();
+class PlayerRadio extends StatefulWidget {
+  const PlayerRadio({Key? key}) : super(key: key);
 
   @override
-  State<RadioPlayer> createState() => _RadioPlayerState();
+  State<PlayerRadio> createState() => _PlayerRadioState();
 }
 
-class _RadioPlayerState extends State<RadioPlayer> {
+class _PlayerRadioState extends State<PlayerRadio> {
 
 
   @override
