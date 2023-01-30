@@ -3,13 +3,14 @@
 // import 'package:hadafo/models/radio.model.dart';
 // import 'package:velocity_x/velocity_x.dart';
 
-// class RadioController extends GetxController {
+// class PodcastController extends GetxController {
 //   final AudioPlayer _audioPlayer = AudioPlayer();
 
 
 //   final Rx<int> currentStreamIndex = 0.obs;
-//   final Rx<PlayerState> playState = PlayerState.PAUSED.obs;
+//   final Rx<PlayerState> playState = PlayerState.paused.obs;
 //   var radioModel = <RadioModel>[].obs;
+//   final url = 'https://www.example.com/song.mp3';
   
 
 //   @override
@@ -21,7 +22,7 @@
 
 //   //play
 //   void smartPlay() async {
-//     if (playState.value == PlayerState.PLAYING) {
+//     if (playState.value == PlayerState.playing) {
 //       pause();
 //     } else {
 //       resume();
@@ -29,22 +30,23 @@
 //   }
 
 //   //play
-//   Future<void> resume() async {
-//     int result =
-//         await _audioPlayer.play(radioModel[currentStreamIndex.value].link);
-//     if (result == 1) {} 
+//   resume() async {
+//     int result = await _audioPlayer.play(radioModel[currentStreamIndex.value].link);
+//     if (result == 1);
 //   }
+
 
 
 //   pause() => _audioPlayer.pause();
 //   stop() => _audioPlayer.stop();
-//   play() => _audioPlayer.play(radioModel[currentStreamIndex.value].link);
+  
+//   play() => _audioPlayer.setSource(Uri.parse(url))
 
 
 
-//     bool isPlaying() => playState.value == PlayerState.PLAYING;
-//     bool isStopped() => playState.value == PlayerState.STOPPED;
-//     bool isLoading() => playState.value == PlayerState.COMPLETED;
+//     bool isPlaying() => playState.value == PlayerState.playing;
+//     bool isStopped() => playState.value == PlayerState.stopped;
+//     bool isLoading() => playState.value == PlayerState.completed;
 
 //   void fetchStreams() {
 //     var radioList = [

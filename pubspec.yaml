@@ -51,6 +51,7 @@ dependencies:
   radio_player:
   xml: ^6.1.0
   xml2json: ^5.3.5
+  audioplayers: 
   
 dev_dependencies:
   flutter_test:

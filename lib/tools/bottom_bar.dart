@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
 import 'package:hadafo/screen/home/home.dart';
-import 'package:hadafo/screen/programme.dart';
+import 'package:hadafo/screen/podcast/podcast.dart';
 import 'package:hadafo/screen/radio/radio.dart';
 import 'package:hadafo/screen/tv/tv.dart';
 import 'package:hadafo/screen/user.dart';
@@ -26,17 +26,17 @@ class BottomBar extends StatelessWidget {
           backgroundColor: Helpers.theme() ? Vx.gray900 : Vx.white,
           selectedItemColor: Helpers.theme() ? Vx.gray100 : Vx.black,
           unselectedItemColor: Vx.gray500,
-          iconSize: 28.0,
-          selectedFontSize: 2.0,
+          // iconSize: 28.0,
+          // selectedFontSize: 2.0,
           currentIndex: utCtrl.tabIndex.value,
           onTap: (index) { 
             utCtrl.updateTabIndex(index);
           },
           items: [
-            const BottomNavigationBarItem(icon: Icon(Foundation.home), label: ""),
-            const BottomNavigationBarItem(icon: Icon(Ionicons.ios_tv), label: ''),
-            const BottomNavigationBarItem(icon: Icon(Entypo.radio),label: ''),
-            const BottomNavigationBarItem(icon: Icon(Fontisto.podcast),label: ''),
+            const BottomNavigationBarItem(icon: Icon(Foundation.home), label: "Accueil"),
+            const BottomNavigationBarItem(icon: Icon(Ionicons.ios_tv), label: 'Directs'),
+            const BottomNavigationBarItem(icon: Icon(Entypo.radio),label: 'Radios'),
+            const BottomNavigationBarItem(icon: Icon(Fontisto.podcast),label: 'Podcasts'),
             BottomNavigationBarItem(
               icon: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
@@ -47,20 +47,20 @@ class BottomBar extends StatelessWidget {
                   fit:BoxFit.cover
                 ),
               ),
-              label: ''
+              label: 'Compte'
             ),
           ],
         ),
       ),
       body: Obx(
           () => utCtrl.tabIndex.value == 0
-            ? Home()
+            ?  Home()
             : utCtrl.tabIndex.value == 1
             ? const Tv()
             : utCtrl.tabIndex.value == 2
             ?   const PlayerRadio()
             : utCtrl.tabIndex.value == 3
-            ?   Programme()
+            ?   Podcast()
             :  User()
         ),
 

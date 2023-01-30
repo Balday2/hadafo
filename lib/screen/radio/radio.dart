@@ -23,65 +23,55 @@ class _PlayerRadioState extends State<PlayerRadio> {
     return Scaffold(
       backgroundColor:  Helpers.theme() ? Vx.gray900 : Vx.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent, elevation: 0.0, 
-        centerTitle: false,
-        title: "Les radios".text.xl3.color(Helpers.theme() ? Vx.gray200 : Vx.gray700).fontFamily('FredokaOne').make().pOnly(left:10),
-      ),
+          backgroundColor:Helpers.theme() ? Vx.gray900 : Vx.white,
+          centerTitle: false,
+          elevation: 0.0,
+          title:'Radios'.text.xl2.color(Helpers.theme() ? Vx.gray100 : Vx.gray700).fontFamily('FredokaOne').make(), 
+          actions: [
+            IconButton(
+              onPressed: (){},
+              icon: Icon(Icons.search, color: Helpers.theme() ? Vx.gray100 : Vx.gray700)
+            ),
+          ],
+        ),
       body: Obx((() => ListView(
           children:[
             for(int i = 0; i<playerCtrl.radioModel.length; i++)...[
-            InkWell(
-                onTap: () { },
-                child: Stack(
+              SizedBox(
+                width: Get.width,
+                height: 70.0,
+                child: Row(
                   children: [
-                    
-                    VxBox(
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-                        child:Image.asset(
-                          playerCtrl.radioModel[i].image,
-                          fit: BoxFit.cover,
-                          height: Get.width/2,
-                          width: Get.width,
+                    Expanded(
+                      flex: 2,
+                      child: Image.asset(
+                        playerCtrl.radioModel[i].image,
+                        fit: BoxFit.cover,
+                        height: Get.width/5,
+                        width: Get.width/5,
+                      ).box.size(Get.width/5, Get.width/5).gray500.make()
+                    ),
+                    Expanded(
+                      flex: 5,
+                      child: [
+                        playerCtrl.radioModel[i].title.text.color(Helpers.theme() ? Vx.gray200 : Vx.gray700).bold.make(),
+                        5.heightBox,
+                        my.autoSizeText(
+                          playerCtrl.radioModel[i].description,
+                          x1:15.0, x2:13.0,
+                          color:Helpers.theme() ? Vx.gray200 : Vx.gray700,
+                          line:1,
                         ),
-                      ),
-                    ).withRounded(value:20.0).height(Get.width/2).make(),
-
-                    VxBox(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          playerCtrl.radioModel[i].title.text.xl3.fontFamily('FredokaOne').white.make(),
-                          my.autoSizeText(
-                            playerCtrl.radioModel[i].description,
-                            x1:20.0, x2:18.0,
-                            color:Vx.white,
-                            line:2,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Center(),
-                              buildPlayStopIcon(playerCtrl.currentStreamIndex.value == i, i)
-                            ]
-                          )
-                        ]
-                      ).p(20).box.bottomRounded(value:20.0).height(Get.width/2)
-                      .linearGradient([
-                          (playerCtrl.radioModel[i].color).withOpacity(0.1),
-                          (playerCtrl.radioModel[i].color).withOpacity(0.3),
-                          (playerCtrl.radioModel[i].color).withOpacity(0.7),
-                          playerCtrl.radioModel[i].color,
-                        ], 
-                          begin: Alignment.center,
-                          end: Alignment.bottomCenter
-                      ).make()
-                    ).withRounded(value:20.0).height(Get.width/2).color((playerCtrl.radioModel[i].color
-                    ).withOpacity(0.5)).make()
-                  ]
-                )
-              ).pSymmetric(v: 5,h:7)
+                      ].vStack(crossAlignment: CrossAxisAlignment.start).pOnly(left: 10)
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: buildPlayStopIcon(playerCtrl.currentStreamIndex.value == i, i)
+                    ),
+                  ],
+                ),
+              ).pSymmetric(h: 10, v: 3).onInkTap(() {
+              }).pOnly(bottom: 5)
             ]
           ]
         ))
@@ -92,9 +82,9 @@ class _PlayerRadioState extends State<PlayerRadio> {
 
   Widget buildPlayStopIcon(bool isSelected, int index){
     return IconButton(
-      color: Colors.white,
+      color: Helpers.theme() ? Vx.gray100 : Vx.gray900,
       icon: buildAudioButton(isSelected),
-      iconSize: 50.0,
+      iconSize: 35.0,
       onPressed: () {
         if(playerCtrl.playState.value && isSelected){
           playerCtrl.stop();

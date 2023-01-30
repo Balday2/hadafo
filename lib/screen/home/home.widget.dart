@@ -1,4 +1,3 @@
-import 'package:flutter_animator/flutter_animator.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:hadafo/controller/article.controller.dart';
 import 'package:hadafo/controller/utils.controller.dart';
@@ -15,6 +14,62 @@ final utCtrl = Get.find<UtilsController>();
 
 ///asdf[ui]
 final ui = WidgetsUi();
+
+
+  SliverAppBar sliverAppBar(BuildContext context, {required List<Widget> tabs}){
+    return SliverAppBar(
+          elevation: 0.0,
+          centerTitle: false,
+          floating: true,
+          pinned: true,
+          snap: true,
+          backgroundColor:Helpers.theme() ? Vx.gray900 : Vx.white,
+          leading: IconButton(
+            onPressed: (){}, 
+            icon: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  'assets/icon.png', 
+                  height:context.isTablet ? Get.width/20 :  Get.width/15,
+                  width:context.isTablet ? Get.width/20 :  Get.width/15,
+                  fit:BoxFit.cover
+                ),
+              ),
+          ),
+          title:'Hadafo'.text.xl2.white.fontFamily('FredokaOne').make(), 
+          actions: [
+            IconButton(
+              onPressed: (){},
+              icon: Icon(Icons.search, color: Helpers.theme() ? Vx.gray100 : Vx.gray700)
+            ),
+            IconButton(
+              onPressed: (){},
+              icon: Icon(Feather.heart, color:  Helpers.theme() ? Vx.gray100 : Vx.gray700)
+            ),
+            IconButton(
+              onPressed: (){},
+              icon: Icon(Feather.bell, color:  Helpers.theme() ? Vx.gray100 : Vx.gray700)
+            )
+          ],
+          bottom: TabBar(
+            labelColor:  Vx.blue700,
+            unselectedLabelColor: Helpers.theme() ? Vx.gray100 : Vx.gray700,
+            
+            indicatorWeight: 3,
+            indicatorColor:Vx.blue700,
+            indicatorSize: TabBarIndicatorSize.label,
+            splashBorderRadius: BorderRadius.circular(50.0),
+      
+            isScrollable: true,
+            physics: const BouncingScrollPhysics(),
+            onTap: (int index) {
+              print('Tab $index is tapped');
+            },
+            enableFeedback: true,
+            tabs: tabs,
+          ),
+      );
+  }
 
 
 
@@ -35,7 +90,7 @@ final ui = WidgetsUi();
             ),
           ),
       ),
-      title:'Hadafo'.text.xl2.white.fontFamily('FredokaOne').make(), 
+      title:'Hadafo'.text.xl2.color(Helpers.theme() ? Vx.gray100 : Vx.gray700).fontFamily('FredokaOne').make(), 
       actions: [
         IconButton(
           onPressed: (){},
@@ -64,14 +119,10 @@ final ui = WidgetsUi();
                   [
                     artCtrl.catModel[i].name.text
                     .color(artCtrl.categoryId_.value == i ? Vx.blue700 : Helpers.theme() ? Vx.gray100 : Vx.gray700)
-                    .xl.make().pSymmetric(h:10),
+                    .lg.make().pSymmetric(h:10),
                     5.heightBox,
-                    if(artCtrl.categoryId_.value == i && artCtrl.lastCatId.value < artCtrl.categoryId_.value)
-                      SlideInLeft( child:VxBox().size(10, 4).roundedLg.blue700.make())
-                    else if(artCtrl.categoryId_.value == i && artCtrl.lastCatId.value > artCtrl.categoryId_.value)
-                      SlideInRight( child:VxBox().size(10, 4).roundedLg.blue700.make())
-                    else if(artCtrl.categoryId_.value == i && artCtrl.lastCatId.value == artCtrl.categoryId_.value)
-                      BounceIn( child:VxBox().size(10, 4).roundedLg.blue700.make())
+                    if(artCtrl.categoryId_.value == i)
+                    VxBox().size(10, 4).roundedLg.blue700.make()
                   ].vStack()
                   .onInkTap(() {
                     artCtrl.updateCatIndex(i);
